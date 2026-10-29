@@ -1,7 +1,6 @@
 // ==========================================================================
 // CodeAI - High Performance Zero-Dependency Node.js Server for Render
-// Zeal College of Engineering & Research | Dept of AI & DS
-// Candidate: Samiksha Kakade
+// C++ Adaptive Learning Space & AI Technical Assessment Studio
 // ==========================================================================
 
 const http = require('http');
@@ -57,8 +56,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`================================================================`);
-  console.log(`CodeAI Server running on port ${PORT}`);
-  console.log(`Candidate: Samiksha Kakade | Zeal College of Engineering, Pune`);
+  console.log(`CodeAI C++ Interactive Studio Server running on port ${PORT}`);
   console.log(`URL: http://localhost:${PORT}`);
   console.log(`================================================================`);
 });

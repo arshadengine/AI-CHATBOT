@@ -1,24 +1,23 @@
 // ==========================================================================
-// CodeAI - Application Engine & AI Tutor LLM Chatbot
-// Zeal College of Engineering & Research | Dept of AI & DS
-// Course: Object Oriented Programming with C++ [ADPC303]
-// Candidate: Samiksha Kakade | Faculty: Mr. Chandan Prasad
+// CodeAI - Adaptive C++ Learning Space & AI Technical Interview Studio
+// Course: Object Oriented Programming with C++
+// Unit 5: Exception Handling and Templates
 // ==========================================================================
 
 const DEFAULT_PROFILE = {
-  name: "Samiksha Kakade",
-  rollNo: "SY-AIDS-26",
-  prn: "72124018K",
-  class: "S.Y. B.Tech (AI & DS)",
-  semester: "III",
+  name: "Student",
+  rollNo: "STU-01",
+  prn: "REG-2026",
+  class: "Computer Science & Engineering / AI & DS",
+  semester: "Semester III",
   academicYear: "2026-27",
   courseName: "Object Oriented Programming with C++",
-  courseCode: "ADPC303",
+  courseCode: "C++ OOP",
   unitName: "Unit 5: Exception Handling and Templates",
-  facultyName: "Mr. Chandan Prasad",
-  collegeName: "Zeal College of Engineering and Research, Pune - 41",
-  recordNo: "ZCOER-ACAD/R/16L",
-  assessmentType: "Adaptive Interview Challenge (AI Mock Interview Simulation Bot)",
+  facultyName: "Course Instructor",
+  collegeName: "Department of Computer Science & Engineering",
+  recordNo: "ACAD-R16L",
+  assessmentType: "Adaptive Technical Interview Simulation",
   maxMarks: 5
 };
 
@@ -27,6 +26,10 @@ function loadCandidateProfile() {
     const raw = localStorage.getItem("codeai_candidate_profile");
     if (raw) {
       const parsed = JSON.parse(raw);
+      if (parsed.name === "Samiksha Kakade" || parsed.courseCode === "ADPC303") {
+        localStorage.removeItem("codeai_candidate_profile");
+        return Object.assign({}, DEFAULT_PROFILE);
+      }
       return Object.assign({}, DEFAULT_PROFILE, parsed);
     }
   } catch (e) {
@@ -238,7 +241,7 @@ function renderSyllabusCards() {
 
     card.innerHTML = `
       <div>
-        <span class="unit-badge-pill ${badgeClass}">Unit ${unit.id} ${unit.id === 5 ? '• CIE 2 Activity' : ''}</span>
+        <span class="unit-badge-pill ${badgeClass}">Unit ${unit.id} ${unit.id === 5 ? '• Core Assessment' : ''}</span>
         <h3 class="unit-title-head">${unit.title}</h3>
         <p style="font-size:0.85rem; color:#475569; line-height:1.5;">${unit.description}</p>
         <ul class="unit-topics-list">
@@ -342,8 +345,8 @@ function initTutorChat() {
 
   if (stream && stream.children.length === 0) {
     appendTutorBotMessage(
-      `👋 **Hello Samiksha!** I am your **C++ AI Tutor & Code Debugger**.\n\n` +
-      `You can ask me any doubt related to **Object Oriented Programming with C++ [ADPC303]**:\n` +
+      `👋 **Hello!** I am your **C++ AI Tutor & Code Debugger**.\n\n` +
+      `You can ask me any doubt related to **Object Oriented Programming with C++**:\n` +
       `• *Unit 5: Exception Handling, RAII, and Templates*\n` +
       `• *Polymorphism, Inheritance, Files & Streams, and STL*\n` +
       `• *Paste your C++ code to find bugs or get optimized implementations.*\n\n` +
@@ -440,7 +443,7 @@ function generateAITutorResponse(query) {
       `    // Destructor ~FileHandler() executes automatically!\n` +
       `}\n` +
       `\`\`\`\n\n` +
-      `*Academic Note for Zeal CIE-2:* Remember that destructors must never throw an exception during stack unwinding; otherwise, \`std::terminate()\` will immediately abort the application.`;
+      `*Important Concept:* Remember that destructors must never throw an exception during stack unwinding; otherwise, \`std::terminate()\` will immediately abort the application.`;
   }
 
   if (q.includes("custom exception") || q.includes("std::exception") || q.includes("what()")) {
@@ -524,7 +527,7 @@ function generateAITutorResponse(query) {
   // General C++ doubt solver response
   return `### 💡 Technical Analysis & Guidance\n\n` +
     `Regarding your question on **"${escapeHtml(query)}"**:\n\n` +
-    `In C++ Object Oriented Programming (ADPC303):\n` +
+    `In C++ Object Oriented Programming:\n` +
     `• Always enforce **type safety** and **compile-time guarantees** over preprocessor macros.\n` +
     `• For robust exception handling in Unit 5, structure code using \`try-catch\` blocks, catch exceptions by \`const std::exception&\`, and rely on **RAII** to guarantee clean destruction during stack unwinding.\n` +
     `• Use function and class templates whenever logic is generic across primitive and user-defined classes.\n\n` +
@@ -775,8 +778,8 @@ function initInterviewListeners() {
 
 function startInterview() {
   appendBotMessage(
-    `Hello ${state.candidateProfile.name}! I am your AI Technical Examiner for **${state.candidateProfile.courseName} (${state.candidateProfile.courseCode})** for **${state.candidateProfile.unitName}**.\n\n` +
-    `Today's assessment is an **Adaptive Interview Challenge** (5 Marks for CIE 2). I evaluate your answers in real-time, adjust the difficulty dynamically, and evaluate your understanding of Exception Handling, Stack Unwinding, RAII, Function & Class Templates, and Template Specialization.\n\n` +
+    `Hello ${state.candidateProfile.name}! I am your AI Technical Examiner for **${state.candidateProfile.courseName}** — **${state.candidateProfile.unitName}**.\n\n` +
+    `Today's assessment is an **Adaptive Technical Interview Challenge** (5.0 Marks). I evaluate your answers in real-time, adjust the difficulty dynamically, and evaluate your understanding of Exception Handling, Stack Unwinding, RAII, Function & Class Templates, and Template Specialization.\n\n` +
     `You can speak using the microphone or type your response, and attach C++ code snippets when needed.\n\nLet's begin!`
   );
 
@@ -930,16 +933,16 @@ function adaptNextQuestion(lastScore) {
 function concludeInterview() {
   clearInterval(state.timerInterval);
   const avgScore = (state.totalScoreSum / Math.max(1, state.questionsAttempted)).toFixed(1);
-  const finalCieMarks = ((avgScore / 10) * 5).toFixed(2);
+  const finalScore = ((avgScore / 10) * 5).toFixed(2);
 
-  const completionMessage = `🎉 **Outstanding job Samiksha! You have successfully completed the Adaptive Interview Challenge for Unit 5!**\n\n` +
+  const completionMessage = `🎉 **Outstanding job ${state.candidateProfile.name}! You have successfully completed the Adaptive Technical Interview for Unit 5!**\n\n` +
     `• **Total Questions Evaluated:** ${state.questionsAttempted}\n` +
     `• **Average Interview Accuracy:** ${avgScore}/10\n` +
-    `• **Calculated CIE 2 Marks:** **${finalCieMarks} / 5.00 Marks**\n\n` +
-    `Your official **Zeal College Assessment Report & Rubric Matrix** has been generated. Click the **"View Full CIE 2 Report"** button above to inspect or print your official submission sheet.`;
+    `• **Calculated Score:** **${finalScore} / 5.00 Marks**\n\n` +
+    `Your official **Performance Evaluation Report & Rubric Matrix** has been generated. Click the **"Evaluation Report"** button above to inspect or print your submission sheet.`;
 
   appendBotMessage(completionMessage);
-  speakText(`Congratulations Samiksha! You have successfully completed the Adaptive Interview Challenge. Your calculated CIE 2 score is ${finalCieMarks} out of 5 marks.`);
+  speakText(`Congratulations ${state.candidateProfile.name}! You have successfully completed the Adaptive Technical Interview. Your calculated score is ${finalScore} out of 5 marks.`);
 
   const btnReport = document.getElementById("btn-generate-report");
   if (btnReport) {
@@ -1015,8 +1018,8 @@ function updateSkillMetrics(evalData, topic) {
   const scoreDisplay = document.getElementById("metric-overall-score");
   if (scoreDisplay) {
     const avg = (state.totalScoreSum / Math.max(1, state.questionsAttempted)).toFixed(1);
-    const cieMarks = ((avg / 10) * 5).toFixed(1);
-    scoreDisplay.textContent = `${cieMarks} / 5.0 Marks`;
+    const scoreMarks = ((avg / 10) * 5).toFixed(1);
+    scoreDisplay.textContent = `${scoreMarks} / 5.0 Marks`;
   }
 }
 
@@ -1112,7 +1115,7 @@ function appendBotMessage(markdownText, speakableText) {
     <div class="msg-avatar">🤖</div>
     <div class="msg-bubble">
       <div class="msg-meta">
-        <span class="msg-author">Dr. C++ AI (Zeal Examiner)</span>
+        <span class="msg-author">Dr. C++ (AI Technical Examiner)</span>
         <div style="display:flex; align-items:center;">
           <span class="msg-time">${time}</span>
           ${speakableText ? `<button class="btn-speech-replay" title="Listen again">🔊</button>` : ''}
@@ -1323,7 +1326,7 @@ function setEvaluatingState(isEvaluating) {
   }
 }
 
-// Formal Zeal College CIE-2 Report Generator
+// Academic Technical Evaluation Report Generator
 function openReportModal() {
   const modal = document.getElementById("report-modal");
   const reportBody = document.getElementById("report-modal-body");
@@ -1368,29 +1371,29 @@ function openReportModal() {
 
   reportBody.innerHTML = `
     <div class="inst-header">
-      <div class="inst-title">Zeal Education Society's</div>
-      <div class="inst-title" style="font-size:1.45rem; color:#1e1b4b; margin: 4px 0;">ZEAL COLLEGE OF ENGINEERING AND RESEARCH</div>
-      <div class="inst-sub">NARHE, PUNE - 41 | DEPARTMENT OF ARTIFICIAL INTELLIGENCE & DATA SCIENCE</div>
+      <div class="inst-title">ACADEMIC TECHNICAL EVALUATION</div>
+      <div class="inst-title" style="font-size:1.45rem; color:#1e1b4b; margin: 4px 0;">OBJECT ORIENTED PROGRAMMING WITH C++</div>
+      <div class="inst-sub">ADVANCED SIMULATION & ADAPTIVE ASSESSMENT PLATFORM</div>
       
       <table class="inst-meta-table">
         <tr>
           <td><strong>Record No.:</strong> ${state.candidateProfile.recordNo}</td>
-          <td><strong>Revision:</strong> 00</td>
+          <td><strong>Revision:</strong> 01</td>
           <td><strong>Date of Assessment:</strong> ${currentDate}</td>
-          <td><strong>Academic Year:</strong> ${state.candidateProfile.academicYear}</td>
+          <td><strong>Academic Session:</strong> ${state.candidateProfile.academicYear}</td>
         </tr>
       </table>
     </div>
 
     <div class="inst-heading-banner">
-      CONTINUOUS INTERNAL EVALUATION (CIE 2) — ASSESSMENT REPORT
+      TECHNICAL EVALUATION & PERFORMANCE ASSESSMENT REPORT
     </div>
 
     <div class="student-info-grid">
       <div class="info-item"><span class="info-label">Candidate Name:</span> <span class="info-value">${escapeHtml(state.candidateProfile.name)}</span></div>
       <div class="info-item"><span class="info-label">Roll Number & PRN:</span> <span class="info-value">${escapeHtml(state.candidateProfile.rollNo)} (PRN: ${escapeHtml(state.candidateProfile.prn)})</span></div>
       <div class="info-item"><span class="info-label">Class & Div:</span> <span class="info-value">${escapeHtml(state.candidateProfile.class)}</span></div>
-      <div class="info-item"><span class="info-label">Course:</span> <span class="info-value">${escapeHtml(state.candidateProfile.courseName)} [${escapeHtml(state.candidateProfile.courseCode)}]</span></div>
+      <div class="info-item"><span class="info-label">Course:</span> <span class="info-value">${escapeHtml(state.candidateProfile.courseName)}</span></div>
       <div class="info-item"><span class="info-label">Course Faculty:</span> <span class="info-value">${escapeHtml(state.candidateProfile.facultyName)}</span></div>
       <div class="info-item"><span class="info-label">Assessment Type:</span> <span class="info-value">${escapeHtml(state.candidateProfile.assessmentType)}</span></div>
     </div>
@@ -1443,7 +1446,7 @@ function openReportModal() {
           <td><strong>${r5}</strong></td>
         </tr>
         <tr style="background:#f8fafc; font-weight:800;">
-          <td colspan="2" style="text-align:right;">TOTAL CIE 2 SCORE (OUT OF 5):</td>
+          <td colspan="2" style="text-align:right;">TOTAL SCORE (OUT OF 5):</td>
           <td>5.0</td>
           <td style="color:#047857; font-size:1.15rem;">${finalMarks} / 5.0</td>
         </tr>

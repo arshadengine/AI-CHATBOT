@@ -1,7 +1,6 @@
-// C++ OOP [ADPC303] Unit 5: Exception Handling and Templates
+// C++ Object Oriented Programming: Exception Handling and Templates
 // Comprehensive Adaptive Question Bank & Syllabus Data
-// Candidate: Samiksha Kakade | Faculty: Mr. Chandan Prasad
-// Zeal College of Engineering and Research, Pune
+// Interactive Learning & AI Technical Assessment Studio
 
 const SYLLABUS_UNITS = [
   {
@@ -32,7 +31,7 @@ const SYLLABUS_UNITS = [
     id: 5,
     title: "Unit 5: Exception Handling & Templates",
     topics: ["try, catch, and throw keywords", "Multiple Catch Handlers & catch(...)", "Standard Exception Hierarchy (std::exception, what())", "Custom Exception Classes", "Stack Unwinding & RAII", "noexcept & Destructor Safety", "Function Templates & Type Deduction", "Class Templates & Out-of-Class Methods", "Non-Type Template Parameters", "Template Specialization (Full vs Partial)"],
-    description: "Robust error handling and type-independent generic programming. Primary focus for CIE-2 Assessment (5 Marks)."
+    description: "Robust error handling and type-independent generic programming. Primary focus for Unit 5 Technical Assessment (5 Marks)."
   },
   {
     id: 6,
@@ -154,7 +153,7 @@ T findMax(T a, T b) {
 int main() {
     std::cout << "Max Int: " << findMax(15, 27) << "\\n";
     std::cout << "Max Double: " << findMax(3.1415, 2.7182) << "\\n";
-    std::cout << "Max String: " << findMax(std::string("Zeal"), std::string("College")) << "\\n";
+    std::cout << "Max String: " << findMax(std::string("Alpha"), std::string("Beta")) << "\\n";
     return 0;
 }`,
     explanation: "A single generic function template instantiated by the compiler for int, double, and std::string with full type safety."
@@ -190,8 +189,8 @@ public:
 int main() {
     try {
         GenericStack<std::string> names;
-        names.push("Samiksha");
-        names.push("AI & DS");
+        names.push("Alice");
+        names.push("Bob");
         std::cout << names.pop() << "\\n";
         std::cout << names.pop() << "\\n";
         names.pop(); // Throws out_of_range exception!
@@ -248,7 +247,7 @@ const QUESTION_BANK = [
     topic: "Exception Handling Fundamentals",
     difficulty: "easy",
     level: 1,
-    question: "Welcome Samiksha! Let's start with the fundamentals. Can you explain the roles of the 'try', 'catch', and 'throw' keywords in C++? How does execution flow when an error occurs?",
+    question: "Welcome! Let's start with the fundamentals. Can you explain the roles of the 'try', 'catch', and 'throw' keywords in C++? How does execution flow when an error occurs?",
     shortPrompt: "Explain the roles of try, catch, and throw in C++.",
     codeSnippet: `// Example flow:
 try {
