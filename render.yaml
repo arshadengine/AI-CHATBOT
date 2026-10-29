@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: codeai-samiksha-kakade
+    env: node
+    plan: free
+    buildCommand: "echo 'Zero-dependency build complete'"
+    startCommand: "node server.js"
+    envVars:
+      - key: NODE_ENV
+        value: production

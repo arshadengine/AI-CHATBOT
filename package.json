@@ -1,0 +1,21 @@
+{
+  "name": "codeai-cpp-learning-interview-studio",
+  "version": "1.0.0",
+  "description": "Adaptive C++ AI Learning Hub & Mock Interview Studio - Zeal College CIE 2 Assessment",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "keywords": [
+    "cpp",
+    "mock-interview",
+    "adaptive-ai",
+    "zeal-college",
+    "adpc303"
+  ],
+  "author": "Samiksha Kakade",
+  "license": "ISC"
+}
